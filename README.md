@@ -3,15 +3,13 @@ Package Name Here
 
 ![CI](https://github.com/renoki-co/laravel-useful-casts/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/laravel-useful-casts/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-useful-casts/branch/master)
-[![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
+[![StyleCI](https://github.styleci.io/repos/302723910/shield?branch=master)](https://github.styleci.io/repos/302723910)
 [![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-useful-casts/v/stable)](https://packagist.org/packages/renoki-co/laravel-useful-casts)
 [![Total Downloads](https://poser.pugx.org/renoki-co/laravel-useful-casts/downloads)](https://packagist.org/packages/renoki-co/laravel-useful-casts)
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-useful-casts/d/monthly)](https://packagist.org/packages/renoki-co/laravel-useful-casts)
 [![License](https://poser.pugx.org/renoki-co/laravel-useful-casts/license)](https://packagist.org/packages/renoki-co/laravel-useful-casts)
 
-**Note:** Replace ```:package_description``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Laravel Useful Casts is a simple package for Laravel 7.0+ that comes with already-tested and already-written, useful casts for Eloquent models.
 
 ## 🤝 Supporting
 
@@ -30,8 +28,24 @@ composer require renoki-co/laravel-useful-casts
 ## 🙌 Usage
 
 ```php
-$ //
+use RenokiCo\UsefulCasts\Casts\Encrypted;
+
+class User extends Model
+{
+    protected $casts = [
+        'ssn' => Encrypted::class,
+    ];
+}
+
+// 'ssn' value gets encrypted in the database.
+$user->update(['ssn' => '12345678']);
 ```
+
+## Available Casts
+
+- `RenokiCo\UsefulCasts\Casts\Encrypted::class` - encrypts/decrypts a value from the database
+- `RenokiCo\UsefulCasts\Casts\Arrayed::class` - serializes/unserializes an array. If null, still returns an array.
+- `RenokiCo\UsefulCasts\Casts\EncryptedArray::class` - encrypts/decrypts and serializes/unserializes an array. If null, it gets encrypted as empty
 
 ## 🐛 Testing
 

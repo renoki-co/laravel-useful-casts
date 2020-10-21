@@ -17,7 +17,6 @@ abstract class TestCase extends Orchestra
 
         $this->loadLaravelMigrations(['--database' => 'sqlite']);
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->withFactories(__DIR__.'/database/factories');
     }
@@ -28,7 +27,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            //
+            \RenokiCo\UsefulCasts\UsefulCastsServiceProvider::class,
         ];
     }
 
@@ -44,6 +43,7 @@ abstract class TestCase extends Orchestra
             'prefix'   => '',
         ]);
         $app['config']->set('auth.providers.users.model', Models\User::class);
+        $app['config']->set('auth.providers.restaurants.model', Models\Restaurant::class);
         $app['config']->set('app.key', 'wslxrEFGWY6GfGhvN9L3wH3KSRJQQpBD');
     }
 
