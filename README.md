@@ -43,9 +43,11 @@ $user->update(['ssn' => '12345678']);
 
 ## Available Casts
 
-- `RenokiCo\UsefulCasts\Casts\Encrypted::class` - encrypts/decrypts a value from the database
-- `RenokiCo\UsefulCasts\Casts\Arrayed::class` - serializes/unserializes an array. If null, still returns an array.
-- `RenokiCo\UsefulCasts\Casts\EncryptedArray::class` - encrypts/decrypts and serializes/unserializes an array. If null, it gets encrypted as empty
+### `RenokiCo\UsefulCasts\Casts\Encrypted::class` - encrypts/decrypts a value from the database
+
+### `RenokiCo\UsefulCasts\Casts\Arrayed::class` - serializes/unserializes an array. If null, still returns an array.
+
+### `RenokiCo\UsefulCasts\Casts\EncryptedArray::class` - encrypts/decrypts and serializes/unserializes an array. If null, it gets encrypted as empty
 
 ## 🐛 Testing
 
