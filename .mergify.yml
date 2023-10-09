@@ -14,4 +14,35 @@ pull_request_rules:
       label:
         add:
           - auto:mergify
-    
+  - name: Automatic merge for Composer patches
+    conditions:
+      - author=dependabot[bot]
+      - or:
+        - label=dependabot:php
+        - label=php
+      - or:
+        - label=auto:dependabot
+        - label=dependencies
+      - dependabot-update-type=version-update:semver-patch
+    actions:
+      merge:
+        method: rebase
+      label:
+        add:
+          - auto:mergify
+  - name: Automatic merge for JS patches
+    conditions:
+      - author=dependabot[bot]
+      - or:
+        - label=dependabot:javascript
+        - label=javascript
+      - or:
+        - label=auto:dependabot
+        - label=dependencies
+      - dependabot-update-type=version-update:semver-patch
+    actions:
+      merge:
+        method: rebase
+      label:
+        add:
+          - auto:mergify
