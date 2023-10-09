@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: Automatic merge for Actions
+    conditions:
+      - author=dependabot[bot]
+      - or:
+        - label=dependabot:actions
+        - label=github_actions
+      - or:
+          - label=auto:dependabot
+          - label=dependencies
+    actions:
+      merge:
+        method: rebase
+      label:
+        add:
+          - auto:mergify
+    
